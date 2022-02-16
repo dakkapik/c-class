@@ -1,3 +1,10 @@
+/*
+File name:  mathtutor.cpp; 
+Author:     Felipe Rodas
+Date:       02/16/2022
+Purpose:   	Test the math skills of the user with a menu that leads to addition, substraction, multiplication, and division 
+*/
+
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>     
@@ -12,9 +19,9 @@ int main()
 	int const MULTIPLICATION = 3;
 	int const DIVISION = 4;
 	int const EXIT = 5;
-	
-	int numberX = rand() % 10;
-	int numberY = rand() % 10;
+
+	int numberX;
+	int numberY;
 	int select;
 	int answer;
 	int correctAnswer;
@@ -23,7 +30,8 @@ int main()
 
 	cout << "Welcome to THE GLORIOUS MATH TUTOR \n";
 	do {
-
+		numberX = rand() % 10;
+		numberY = rand() % 10;
 		cout << "MAIN MENU\n";
 		cout << "1. Addition\n";
 		cout << "2. Subtraction \n";
@@ -31,6 +39,7 @@ int main()
 		cout << "4. Division \n";
 		cout << "5. Exit \n";
 		cout << "Enter a choice: \n";
+
 		cin >> select;
 
 		switch (select) {
@@ -74,9 +83,32 @@ int main()
 
 		break;
 		case MULTIPLICATION :
-			
+			correctAnswer = numberX * numberY;
+
+			cout << "what is " << numberX << " X " << numberY << " ?\n";
+			cin >> answer; 
+
+			if(answer == correctAnswer){
+				cout << "\nthat is right! great work champ!\n";
+			} else {
+				cout << "\nthat is wrong. The correct answer is " << correctAnswer << "\n";
+			}
 		break;
 		case DIVISION :
+
+			if(numberY == 0) numberY ++;
+
+			correctAnswer = numberX / numberY;
+
+			cout << "what is " << numberX << " / " << numberY << " ?\n";
+			cin >> answer; 
+
+			if(answer == correctAnswer){
+				cout << "\nthat is right! great work champ!\n";
+			} else {
+				cout << "\nthat is wrong. The correct answer is " << correctAnswer << "\n";
+			}
+
 		break;
 		case EXIT :
 			return 0;
