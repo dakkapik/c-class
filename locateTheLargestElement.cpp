@@ -1,14 +1,12 @@
 /*
-File name:  locateTheLargestElement.cpp; 
-Author:     Felipe Rodas
-Date:       02/16/2022
-Purpose:   	
+    File name:  locateTheLargestElement.cpp
+    Author:     Felipe Rodas
+    Date:       02/16/2022
+    Purpose:   	Finds the largest element on a array and displays it to the user
 */
 
 #include <iostream>
-#include <stdio.h>
-#include <stdlib.h>     
-#include <time.h>  
+
 
 using namespace std;
 
@@ -19,14 +17,29 @@ void locateLargest(const double a[][4], int location[]);
 
 int main()
 {
+    double matrix[HEIGHT][WIDTH];
+    int position[2];
 
-    double matrix[HEIGHT][WIDTH] = {{23.5, 35, 2, 10},{4.5, 3, 45, 3.5},{35, 44, 5.5, 9.6}};
-    
+    cout << "enter 3 arrays of 4 elements separated by spaces" << endl;
 
+    for(int i = 0; i < HEIGHT; i++){
+        cout << "enter the array " << i << ": " << endl;
+        cin >> matrix[i][0] >> matrix[i][1] >> matrix[i][2] >>  matrix[i][3];
+    }
 
+    locateLargest(matrix, position);
 }
 
 void locateLargest(const double a[][4], int location[]){
     int largest = 0;
-
+    for(int i = 0; i < HEIGHT; i++){
+        for(int j = 0; j < WIDTH; j++){
+            if(largest < a[i][j]){
+                largest = a[i][j];
+                location[0] = i;
+                location[1] = j;
+            }
+        }
+    }
+    cout << "The location of the largest element is at: (" << location[0] << ", " << location[1] << ")" << endl;
 }

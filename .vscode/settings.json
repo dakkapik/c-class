@@ -5,6 +5,7 @@
         "system_error": "cpp",
         "xlocmon": "cpp",
         "xtr1common": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "ostream": "cpp"
     }
 }
