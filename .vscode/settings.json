@@ -6,6 +6,9 @@
         "xlocmon": "cpp",
         "xtr1common": "cpp",
         "cmath": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "fstream": "cpp",
+        "iosfwd": "cpp",
+        "vector": "cpp"
     }
 }
