@@ -2,7 +2,7 @@
     File name:  searchBenchmarks.cpp
     Author:     Felipe Rodas
     Date:       02/18/2022
-    Purpose:    
+    Purpose:    create a text document with random numbers, read the numbers, sort the number, and then perform a binary search to find a target number
 */
 #include <iostream>
 #include <fstream>
@@ -25,8 +25,10 @@ int main() {
 
     int numArray[NUMBER_LIST_LENGTH];
     int sortedArray[NUMBER_LIST_LENGTH];
-    
+    int result;
+
     int target = 101;
+
 
     generateNumberFile(FILE_NAME, NUMBER_LIST_LENGTH);
 
@@ -36,21 +38,19 @@ int main() {
 
     cout << "random number array generated and sorted" << endl;
     while(target > 100 || target < 0){
-        cout << "enter number to find:" << endl;
+        cout << "enter number to find:";
         cin >> target;
         if(target > 100 || target < 0) cout << "invalid number"<< endl;
     }
 
-    binarySearch(sortedArray, NUMBER_LIST_LENGTH, target);
+    result = binarySearch(sortedArray, NUMBER_LIST_LENGTH, target);
     
-
-    for(int i = 0; i < NUMBER_LIST_LENGTH; i++) {
-        cout << sortedArray[i] << '/';
+    if(result != -1){
+        cout << "number position found at: " << result;
+    } else {
+        cout << "search failed";
     }
-
-
     return 0;
-
 }
 
 void generateNumberFile(string name, int length){
@@ -112,22 +112,27 @@ int binarySearch (int array[], int length, int target) {
     int highPoint = length - 1;
     int lowPoint = 0;
     int midPoint = highPoint / 2;
-    int result;
-    while (result == ){
+    int count = 0;
+    bool found = false;
+
+
+    while (!found && count < length / 2){
+        count ++;
         if(array[midPoint] == target) {
-            cout << "For binary search, number of comparisons: ";
+            cout << "For binary search, number of comparisons: " << count << endl;
+            found = true;
             return midPoint;
         }
         if(target > array[midPoint]){
             lowPoint = midPoint + 1;
             midPoint = (highPoint - lowPoint) / 2 + lowPoint;
         }
-        // if(target < array[midPoint]){
-
-        //     lowPoint = midPoint - 1;
-        //     midPoint = lowPoint / 2
-
-        // }
+        if(target < array[midPoint]){
+            highPoint = midPoint - 1;
+            midPoint = (highPoint - lowPoint) / 2 + lowPoint;
+        }
     }
 
+    cout << "For binary search, number of comparisons: " << count << endl;
+    return -1;
 }
