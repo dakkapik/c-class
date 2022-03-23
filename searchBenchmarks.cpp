@@ -109,13 +109,13 @@ void selectionSort ( int numArray[], int sortedArray[], int length ) {
 }
 
 int binarySearch (int array[], int length, int target) {
-    int highPoint = length;
+    int highPoint = length - 1;
     int lowPoint = 0;
-    int midPoint = highPoint - lowPoint / 2;
+    int midPoint = highPoint / 2;
     int result;
-    for(int i = 0; i < length; i++){
+    while (result == ){
         if(array[midPoint] == target) {
-            cout << "For binary search, number of comparisons: ", i;
+            cout << "For binary search, number of comparisons: ";
             return midPoint;
         }
         if(target > array[midPoint]){
