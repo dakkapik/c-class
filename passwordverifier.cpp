@@ -1,5 +1,5 @@
 /*
-File name:  passwordverifier.cpp 
+File name:  passwordverifier.cpp
 Author:     Felipe Rodas
 Date:       04/06/2022
 Purpose:    verify a password
@@ -11,10 +11,6 @@ Purpose:    verify a password
 using namespace std;
 
 void checkPassword(char[], int);
-bool checkLenght(char[]);
-bool checkUpperCase(char[]);
-bool checkLowerCase(char[]);
-bool checkDigit(char[]);
 
 int main () {
     const int MAX_SIZE = 80;
@@ -31,65 +27,39 @@ int main () {
 }
 
 void checkPassword(char password[], int size){
-    cout << "Enter a password: ";
+	int i = 0;
+	bool hasLower = false;
+	bool hasUpper = false;
+	bool hasDigit = false;
+	cout << "Enter a password: ";
     cin.getline(password, size);
 
-    if(!checkLenght(password)){
-        cout << "password is invalid." << 
-        endl << "password should be at least 6 characters long." << endl;
-        checkPassword(password, size);
-    }
-
-    if(!checkUpperCase(password)){
-        cout << "password is invalid." << 
-        endl << "It should contain at least one uppercase letter." << endl;
-        checkPassword(password, size);
-    }
-    if(!checkLowerCase(password)){
-        cout << "password is invalid." << 
-        endl << "It should contain at least one lowercase letter." << endl;
-        checkPassword(password, size);
-    }
-    if(!checkDigit(password)){
-        cout << "password is invalid." << 
-        endl << "It should have at least one digit." << endl;
-        checkPassword(password, size);
-    }
-    cout << "password is valid.";
-    return;
-}
-
-bool checkLenght(char password[]){
-    int i = 0;
-    while(password[i] != '\0'){
-        i++;
-    }
-
-    if(i >= 6 ) return true; else return false;
-}
-
-bool checkUpperCase(char password[]) {
-    int i = 0;
-    while(password[i] != '\0'){
-        if(isupper(password[i])) return true;
-        i++;
-    }
-    return false;
-}
-
-bool checkLowerCase(char password[]){
-    int i = 0;
-    while(password[i] != '\0'){
-        if(islower(password[i])) return true;
-        i++;
-    }
-    return false;
-}
-bool checkDigit(char password[]){
-    int i = 0;
-    while(password[i] != '\0'){
-        if(isdigit(password[i])) return true;
-        i++;
-    }
-    return false;
+	while (password[i] != '\0') {
+		if (isupper(password[i])) hasUpper = true;
+		if (islower(password[i])) hasLower = true;
+		if (isdigit(password[i])) hasDigit = true;
+		i++;
+	}
+	if (i < 6) {
+		cout << "password is invalid." << endl
+			<< "password should be at least 6 characters long." << endl;
+		return;
+	}
+	if (!hasLower) {
+		cout << "password is invalid." << endl
+			<< "It should contain at least one lowercase letter." << endl;
+		return;
+	}
+	if (!hasUpper) {
+		cout << "password is invalid." << endl
+			<< "It should contain at least one uppercase letter." << endl; 
+		return;
+	}
+	if (!hasDigit) {
+		cout << "password is invalid." << endl
+			<< "It should have at least one digit." << endl; 
+		return;
+	}
+   
+    cout << "password is valid."; return;
 }
