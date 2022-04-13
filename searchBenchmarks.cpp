@@ -1,7 +1,7 @@
 /*
     File name:  searchBenchmarks.cpp
     Author:     Felipe Rodas
-    Date:       02/18/2022
+    Date:       02/23/2022
     Purpose:    create a text document with random numbers, read the numbers, sort the number, and then perform a binary search to find a target number
 */
 #include <iostream>
