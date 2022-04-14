@@ -30,6 +30,4 @@ int main() {
     p3.x = p1.x + p2.x;
     p3.y = p1.y + p2.y;
     cout << "Coordinates of p1 + p2 are: " << p3.x << ", " << p3.y;
-
-    return 0;
 }
